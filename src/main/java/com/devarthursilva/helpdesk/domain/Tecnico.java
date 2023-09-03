@@ -3,10 +3,10 @@ package com.devarthursilva.helpdesk.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.devarthursilva.helpdesk.domain.enums.Perfil;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import com.devarthursilva.helpdesk.domain.enums.Perfil;
 
 @Entity
 public class Tecnico extends Pessoa{
