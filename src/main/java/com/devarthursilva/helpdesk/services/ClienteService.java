@@ -6,13 +6,14 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.devarthursilva.helpdesk.domain.Pessoa;
 import com.devarthursilva.helpdesk.domain.Cliente;
+import com.devarthursilva.helpdesk.domain.Pessoa;
 import com.devarthursilva.helpdesk.domain.dtos.ClienteDTO;
-import com.devarthursilva.helpdesk.repositories.PessoaRepository;
 import com.devarthursilva.helpdesk.repositories.ClienteRepository;
+import com.devarthursilva.helpdesk.repositories.PessoaRepository;
 import com.devarthursilva.helpdesk.services.exceptions.DataIntegrityViolationException;
 import com.devarthursilva.helpdesk.services.exceptions.ObjectNotFoundException;
 
@@ -25,6 +26,9 @@ public class ClienteService {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	public Cliente findById(Integer id) {
 		Optional<Cliente> obj = clienteRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
@@ -36,7 +40,7 @@ public class ClienteService {
 
 	public Cliente create(ClienteDTO clienteDTO) {
 		clienteDTO.setId(null);
-		
+		clienteDTO.setSenha(encoder.encode(clienteDTO.getSenha()));
 		validaProCpfEEmail(clienteDTO);
 		
 		Cliente cliente = new Cliente(clienteDTO);
