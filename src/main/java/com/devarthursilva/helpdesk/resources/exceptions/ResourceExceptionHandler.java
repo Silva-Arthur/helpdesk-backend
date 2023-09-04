@@ -1,7 +1,5 @@
 package com.devarthursilva.helpdesk.resources.exceptions;
 
-import java.util.stream.Collectors;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 
