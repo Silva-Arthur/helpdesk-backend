@@ -12,7 +12,7 @@ import com.devarthursilva.helpdesk.services.DBService;
  * 
  * */
 @Configuration
-@Profile("teste")
+@Profile("test")
 public class TestConfig {
 	
 	@Autowired
