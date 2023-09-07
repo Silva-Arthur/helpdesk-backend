@@ -36,7 +36,7 @@ public class Tecnico extends Pessoa{
 		this.cpf = tecnico.getCpf();
 		this.email = tecnico.getEmail();
 		this.senha = tecnico.getSenha();
-		this.perfis = tecnico.getPerfis().stream().map(p -> p.getCodigo()).collect(Collectors.toSet());
+		this.perfis = tecnico.getPerfis();
 		this.dataCriacao = tecnico.getDataCriacao();
 	}
 

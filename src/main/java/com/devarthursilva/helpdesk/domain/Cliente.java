@@ -36,7 +36,7 @@ public class Cliente extends Pessoa{
 		this.cpf = cliente.getCpf();
 		this.email = cliente.getEmail();
 		this.senha = cliente.getSenha();
-		this.perfis = cliente.getPerfis().stream().map(p -> p.getCodigo()).collect(Collectors.toSet());
+		this.perfis = cliente.getPerfis();
 		this.dataCriacao = cliente.getDataCriacao();
 	}
 
