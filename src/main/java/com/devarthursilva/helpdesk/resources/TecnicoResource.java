@@ -34,6 +34,7 @@ public class TecnicoResource {
 	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
 		Tecnico obj = tecnicoService.findById(id);
 		
+		System.out.println(new TecnicoDTO(obj));
 		return ResponseEntity.ok(new TecnicoDTO(obj));
 	}
 	
@@ -64,6 +65,7 @@ public class TecnicoResource {
 	public ResponseEntity<TecnicoDTO> update(
 			@PathVariable Integer id,
 			@Valid @RequestBody	TecnicoDTO tecnicoDTO) {
+		System.out.println(tecnicoDTO);
 		Tecnico tecnico = tecnicoService.update(id, tecnicoDTO);
 		
 		return ResponseEntity.ok().body(new TecnicoDTO(tecnico));
